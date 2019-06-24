@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://luts/identity.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D lut;
+
+//
+vec4 get_lut_mapping_floor(vec4 old_color){
+	vec2 slice_pos = vec2(floor(16.0*old_color.r)/16.0, floor(16.0*old_color.g)/16.0);
+	float slice_index = (floor(16.0*old_color.b))/16.0;
+	vec2 lut_pos = vec2(slice_index + (slice_pos.x/16.0), slice_pos.y);
+	vec4 final_color = texture(lut, lut_pos);
+	final_color.a = old_color.a;
+	return final_color;
+}
+
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE,SCREEN_UV);
+	color = get_lut_mapping_floor(color);
+	//color.r = texture(red,vec2(color.r,0.5)).a;
+	//color.g = texture(green,vec2(color.g,0.5)).a;
+	//color.b = texture(blue,vec2(color.b,0.5)).a;
+	//color.b = color2.b;
+	COLOR = color;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/lut = ExtResource( 1 )
