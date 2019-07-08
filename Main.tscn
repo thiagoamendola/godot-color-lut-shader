@@ -6,14 +6,139 @@
 [node name="Main" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 505.394, 299.277 )
-scale = Vector2( 0.794773, 0.794774 )
+position = Vector2( 517.394, 299.277 )
+scale = Vector2( 0.7897, 0.789702 )
 texture = ExtResource( 1 )
 
-[node name="Control" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -40.0
+margin_top = -37.0
+margin_right = 118.0
+margin_bottom = 116.0
+color = Color( 1, 0.545098, 0.545098, 1 )
+
+[node name="RedPalette" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="0" type="ColorRect" parent="RedPalette"]
+margin_left = 162.0
+margin_top = -45.2892
+margin_right = 202.0
+margin_bottom = 33.7108
+color = Color( 0, 0, 0, 1 )
+
+[node name="1" type="ColorRect" parent="RedPalette"]
+margin_left = 201.303
+margin_top = -45.2892
+margin_right = 241.303
+margin_bottom = 33.7108
+color = Color( 0.0980392, 0, 0, 1 )
+
+[node name="2" type="ColorRect" parent="RedPalette"]
+margin_left = 239.352
+margin_top = -45.2892
+margin_right = 279.352
+margin_bottom = 33.7108
+color = Color( 0.160784, 0, 0, 1 )
+
+[node name="3" type="ColorRect" parent="RedPalette"]
+margin_left = 278.237
+margin_top = -45.2892
+margin_right = 318.237
+margin_bottom = 33.7108
+color = Color( 0.223529, 0, 0, 1 )
+
+[node name="4" type="ColorRect" parent="RedPalette"]
+margin_left = 316.738
+margin_top = -45.2892
+margin_right = 356.738
+margin_bottom = 33.7108
+color = Color( 0.290196, 0, 0, 1 )
+
+[node name="5" type="ColorRect" parent="RedPalette"]
+margin_left = 354.591
+margin_top = -45.2892
+margin_right = 394.591
+margin_bottom = 33.7108
+color = Color( 0.352941, 0, 0, 1 )
+
+[node name="6" type="ColorRect" parent="RedPalette"]
+margin_left = 393.03
+margin_top = -45.1458
+margin_right = 433.03
+margin_bottom = 33.8542
+color = Color( 0.419608, 0, 0, 1 )
+
+[node name="7" type="ColorRect" parent="RedPalette"]
+margin_left = 430.236
+margin_top = -45.1458
+margin_right = 470.236
+margin_bottom = 33.8542
+color = Color( 0.490196, 0, 0, 1 )
+
+[node name="8" type="ColorRect" parent="RedPalette"]
+margin_left = 468.737
+margin_top = -45.1458
+margin_right = 508.737
+margin_bottom = 33.8542
+color = Color( 0.556863, 0, 0, 1 )
+
+[node name="9" type="ColorRect" parent="RedPalette"]
+margin_left = 508.242
+margin_top = -45.1458
+margin_right = 548.242
+margin_bottom = 33.8542
+color = Color( 0.627451, 0, 0, 1 )
+
+[node name="10" type="ColorRect" parent="RedPalette"]
+margin_left = 546.291
+margin_top = -45.1458
+margin_right = 586.291
+margin_bottom = 33.8542
+color = Color( 0.698039, 0, 0, 1 )
+
+[node name="11" type="ColorRect" parent="RedPalette"]
+margin_left = 585.594
+margin_top = -45.1458
+margin_right = 625.594
+margin_bottom = 33.8542
+color = Color( 0.768627, 0, 0, 1 )
+
+[node name="12" type="ColorRect" parent="RedPalette"]
+margin_left = 625.315
+margin_top = -45.1458
+margin_right = 665.315
+margin_bottom = 33.8542
+color = Color( 0.839216, 0, 0, 1 )
+
+[node name="13" type="ColorRect" parent="RedPalette"]
+margin_left = 662.946
+margin_top = -45.1458
+margin_right = 702.946
+margin_bottom = 33.8542
+color = Color( 0.909804, 0, 0, 1 )
+
+[node name="14" type="ColorRect" parent="RedPalette"]
+margin_left = 702.463
+margin_top = -45.1458
+margin_right = 742.463
+margin_bottom = 33.8542
+color = Color( 0.980392, 0, 0, 1 )
+
+[node name="15" type="ColorRect" parent="RedPalette"]
+margin_left = 740.183
+margin_top = -45.1458
+margin_right = 780.183
+margin_bottom = 33.8542
+color = Color( 1, 0, 0, 1 )
+
+[node name="Filter" type="ColorRect" parent="."]
 material = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.948
-margin_right = 1024.05
-margin_bottom = 602.0
+margin_left = -3.94037
+margin_top = -9.086
+margin_right = 1022.06
+margin_bottom = 592.914
