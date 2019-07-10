@@ -39,31 +39,22 @@ vec3 get_interp_percent_color(vec3 color, vec3 floor, vec3 diff){
 
 // Retrieve interpolated color
 
-vec3 get_interpolated_color(vec3 floor, vec3 diff, vec3 perc){
-	vec3 res = vec3(0.0);
-	res.r = floor.r + diff.r * perc.r;
-	res.g = floor.g + diff.g * perc.g;
-	res.b = floor.b + diff.b * perc.b;
-	return res;
+vec3 get_interpolated_color(vec3 floorc, vec3 diff, vec3 perc){
+	return floorc.rgb + diff.rgb * perc.rgb;
 }
 
 //
 vec4 get_lut_mapping_floor(vec4 old_color){
-	float lut_div = lut_size-1.0;
-	float lut_div_width = lut_size * lut_div;
-	vec2 pixel_center = vec2(0.0/(lut_size*lut_size), 0.0/lut_size);
-	vec3 old_color_floor = vec3(floor(lut_div*old_color.r), floor(lut_div*old_color.g), floor(lut_div*old_color.b));
-	vec3 old_color_ceil = vec3(ceil(lut_div*old_color.r), ceil(lut_div*old_color.g), ceil(lut_div*old_color.b));
-	vec3 old_color_diff = (old_color_floor - old_color_ceil)/lut_size;
-	vec3 old_color_percentages = get_interp_percent_color(old_color.rgb, old_color_floor/lut_size, old_color_diff);
-	// Change to texelFetch(lut, pos, 0)
-//	vec2 lut_color_floor_pos = vec2(pixel_center.x + old_color_floor.b + (old_color_floor.r/lut_div), pixel_center.y + old_color_floor.g);
-	ivec2 lut_color_floor_pos = ivec2(int(lut_size*old_color_floor.b + old_color_floor.r),  int(old_color_floor.g));
-//	vec2 lut_color_ceil_pos = vec2(pixel_center.x + old_color_ceil.b + (old_color_ceil.r/lut_div), pixel_center.y + old_color_ceil.g);
-	ivec2 lut_color_ceil_pos = ivec2(int(lut_size*old_color_ceil.b + old_color_ceil.r), int(old_color_ceil.g));
-//	vec3 lut_color_floor = texture(lut, lut_color_floor_pos).rgb;
+	float lut_div = lut_size - 1.0;
+	vec3 old_color_b16f = lut_div * old_color.rgb;
+	vec3 old_color_floor_b16f = floor(old_color_b16f);
+	vec3 old_color_ceil_b16f = ceil(old_color_b16f);
+	vec3 old_color_diff = (old_color_floor_b16f - old_color_ceil_b16f)/lut_div;
+	vec3 old_color_percentages = get_interp_percent_color(old_color.rgb, old_color_floor_b16f/lut_div, old_color_diff);
+
+	ivec2 lut_color_floor_pos = ivec2(int(lut_size*old_color_floor_b16f.b + old_color_floor_b16f.r),  int(old_color_floor_b16f.g));
+	ivec2 lut_color_ceil_pos = ivec2(int(lut_size*old_color_ceil_b16f.b + old_color_ceil_b16f.r), int(old_color_ceil_b16f.g));
 	vec3 lut_color_floor = texelFetch(lut, lut_color_floor_pos, 0).rgb;
-//	vec3 lut_color_ceil = texture(lut, lut_color_ceil_pos).rgb;
 	vec3 lut_color_ceil = texelFetch(lut, lut_color_ceil_pos, 0).rgb;
 	vec3 lut_color_diff = lut_color_floor - lut_color_ceil;
 
