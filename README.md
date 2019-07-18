@@ -1,9 +1,17 @@
-# Godot Color LUT Filter
+# Godot Color LUT Shader
 
-Color LUT filter for Godot 3.
+Color Grading with LUT shader for Godot 3.
 
-This filter maps all rendered pixels and convert their colors according to a provided 3D LUT texture. It's a highly 
-efficient color correction method for real-time applications in Godot.
+This shader maps all rendered pixels and convert their colors according to a provided 3D lookup table (LUT) texture. It's a highly efficient color correction method for real-time applications in Godot.
+
+
+## Implementation
+
+This fragment shader uses a precomputed lookup table mapping the RGB domain to match your current pixel color with its respective position in the lookup and swap it with lookup's one.
+
+For the values that are not present in the table, a linear interpolation is made using the surrounding color samples to build an approximated value.
+
+As we only look at the lookups, this method can acquire the same results of multiple real-time color operations with only a cheap texture read cost.
 
 ## References
 
