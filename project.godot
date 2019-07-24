@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Color Grading LUT"
-run/main_scene="res://src/Main.tscn"
+run/main_scene="res://example/Main.tscn"
 config/icon="res://icon.png"
 
 [rendering]
