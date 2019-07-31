@@ -19,6 +19,10 @@ config/name="Color Grading LUT"
 run/main_scene="res://example/Main.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "color_grading_lut" )
+
 [rendering]
 
 quality/filters/anisotropic_filter_level=1
