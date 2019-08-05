@@ -11,6 +11,7 @@ This shader maps all rendered pixels and convert their colors according to a pro
 1. Create an instance of "src/ColorGradingFilter.tscn" scene into your desired scene.
 2. In the Inspector, look for "_Material -> Material_", right click in "Shader Material" and click in "Make Unique"
 3. Now left click in the Shader Material, open the "_Shader Param_" tab and replace the *Lut* field for your desired LUT
+4. Resize the control to cover the whole screen
 
 ### Screenshot Plugin
 
