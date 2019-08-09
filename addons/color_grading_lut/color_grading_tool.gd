@@ -16,7 +16,6 @@ func _unhandled_input(event):
 
 func generate_lut_screenshot():
 	var screenshot = take_screenshot()
-	screenshot.lock()
 	var identity_lut = Image.new()
 	identity_lut.load("res://addons/color_grading_lut/identity_lut.png")
 	screenshot = insert_lut(screenshot, identity_lut)
