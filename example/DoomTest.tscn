@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://example/example.png" type="Texture" id=1]
 [ext_resource path="res://src/ColorGradingFilter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://luts/autocontrast.png" type="Texture" id=3]
-[ext_resource path="res://addons/color_grading_lut/color_grading_tool.gd" type="Script" id=4]
-[ext_resource path="res://addons/color_grading_lut/icon.png" type="Texture" id=5]
+[ext_resource path="res://luts/doom.png" type="Texture" id=3]
+[ext_resource path="res://luts/32_pixels/doom.png" type="Texture" id=4]
+[ext_resource path="res://luts/64_pixels/doom_64.png" type="Texture" id=5]
+[ext_resource path="res://addons/color_grading_lut/color_grading_tool.gd" type="Script" id=6]
+[ext_resource path="res://addons/color_grading_lut/icon.png" type="Texture" id=7]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -77,19 +79,56 @@ void fragment(){
 	COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 1 )
 shader_param/lut_size = 16.0
 shader_param/lut = ExtResource( 3 )
 
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/lut_size = 32.0
+shader_param/lut = ExtResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/lut_size = 64.0
+shader_param/lut = ExtResource( 5 )
+
 [node name="Main" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 517.394, 299.277 )
+position = Vector2( 519.561, 290.151 )
 scale = Vector2( 0.7897, 0.789702 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="ColorGradingFilter" parent="." instance=ExtResource( 2 )]
+[node name="Spot1" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0.133333, 0.168627, 0.0941176, 1 )
+margin_left = 196.649
+margin_top = 436.999
+margin_right = 236.649
+margin_bottom = 476.999
+
+[node name="Spot2" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0.145098, 0.172549, 0.101961, 1 )
+margin_left = 160.209
+margin_top = 436.318
+margin_right = 200.209
+margin_bottom = 476.318
+
+[node name="ColorGradingFilter16" parent="." instance=ExtResource( 2 )]
+material = SubResource( 3 )
+margin_left = -4.01233
+margin_top = 4.45026
+margin_right = 1019.99
+margin_bottom = 604.45
+color = Color( 1, 1, 1, 0 )
+
+[node name="ColorGradingFilter32" parent="." instance=ExtResource( 2 )]
 material = SubResource( 2 )
 margin_left = -4.01233
 margin_top = 4.45026
@@ -97,9 +136,18 @@ margin_right = 1019.99
 margin_bottom = 604.45
 color = Color( 1, 1, 1, 0 )
 
+[node name="ColorGradingFilter64" parent="." instance=ExtResource( 2 )]
+material = SubResource( 4 )
+margin_left = -4.01233
+margin_top = 4.45026
+margin_right = 1019.99
+margin_bottom = 604.45
+color = Color( 1, 1, 1, 0 )
+
 [node name="ColorGradingTool" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 7 )
 }
+LUT_size = 64
 
