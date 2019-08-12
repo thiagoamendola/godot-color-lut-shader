@@ -1,8 +1,10 @@
 tool
 extends Node
 
+export(int) var LUT_size = 8
 
 func _enter_tree():
+	#generate_identity_lut(LUT_size)
 	pass
 
 func _exit_tree():
@@ -38,3 +40,24 @@ func insert_lut(screenshot:Image, lut:Image):
 	lut.unlock()
 	screenshot.unlock()
 	return screenshot
+
+func generate_identity_lut(lut_size:int):
+	var image: Image = Image.new()
+	image.create(lut_size*lut_size, lut_size, false, Image.FORMAT_RGB8)
+	image.lock()
+	var divider:int = (lut_size-1)
+	var div_step:float = 1.0/(lut_size-1)
+
+	for b in range(lut_size):
+		for g in range(lut_size):
+			for r in range(lut_size):
+				var pos = Vector2(r + lut_size*b, g)
+				var cur_color = Color(float(r),float(g),float(b)) * div_step
+				cur_color.a = 1
+				image.set_pixelv(pos, cur_color)
+	
+	
+	
+	image.unlock()
+	image.save_png("res://identity_lut_"+str(lut_size)+".png")
+	pass
