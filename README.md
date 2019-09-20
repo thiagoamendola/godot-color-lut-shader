@@ -17,7 +17,7 @@ This shader maps all rendered pixels and convert their colors according to a pro
 
 ### Screenshot Plugin
 
-To assist in the creation of the LUTs, the **screenshot plugin** enables taking screenshots while playing the project and preparing it for color correction in an external tool by placing an identity LUT in the top left corner of the generated image.
+To assist in the creation of the LUTs, the **screenshot plugin** enables taking screenshots while playing the project and preparing it for color correction in an external image editor (such as [Krita](https://krita.org/en/)) by placing an identity LUT in the top left corner of the generated image.
 
 #### How to install
 
@@ -32,7 +32,6 @@ To assist in the creation of the LUTs, the **screenshot plugin** enables taking 
 
 With this screenshot in hands, you can use your preferred image editor to apply your color transformations. In the end, just crop the upper-left corner of your image to get your final LUT (256x16 pixels by default).
 
-
 ## Implementation
 
 ![](processing.png "LUT Title")
@@ -41,9 +40,15 @@ With this screenshot in hands, you can use your preferred image editor to apply 
 
 This fragment shader uses a precomputed lookup table mapping the RGB domain to match your current pixel color with its respective position in the lookup and swap it with lookup's one.
 
-For the values that are not present in the table, a linear interpolation is made using the surrounding color samples to create an approximated value.
+For the values that are not present in the table, a type of linear interpolation called *trilinear interpolation* is made using the 8 surrounding color samples to track the distances between them and the original color. Those distances are reapplied in the new color space's samples to get an approximated color value.
 
-As we only look at the lookups to create this effect, this method can acquire the same result of multiple real-time color operations with only an inexpensive texture read cost.
+As we only look at the lookups to create this effect, this method can acquire the same result of multiple real-time color operations with only an unexpensive texture read cost.
+
+### Limitations
+
+The intended color mapping should not depend on the pixel position or its adjacent pixels. As we only look into the LUT texture, we can't check the position or adjacent cells without increasing the algorithm's complexity and giving up the most useful aspect of this technique: performance.
+
+The provided LUT should also not be too sparse, otherwise transformation artifacts might occur in the final image. A workaround for this would be to increase LUT's size to improve its quality but its always advised to rework your transformation operations in your external image editor to improve LUT samples sparsity.
 
 ## References
 
