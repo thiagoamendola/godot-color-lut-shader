@@ -4,7 +4,6 @@ Color Grading with LUT shader for Godot 3.
 
 ![](lut_title.png "LUT Title")
 
-
 This shader maps all rendered pixels and convert their colors according to a provided 3D lookup table (LUT) texture. It's a highly efficient color correction method for real-time applications in Godot.
 
 ## Usage
@@ -36,6 +35,7 @@ With this screenshot in hands, you can use your preferred image editor to apply 
 
 ## Implementation
 
+![](processing.png "LUT Title")
 
 *Demo for **RGB Cube visualization and discretization**: https://www.openprocessing.org/sketch/744896*
 
@@ -49,14 +49,13 @@ As we only look at the lookups to create this effect, this method can acquire th
 
 - Adrian Courrèges' Metal Gear Solid V Graphic Study: http://www.adriancourreges.com/blog/2017/12/15/mgs-v-graphics-study/
 - NVIDIA's GPU Gems - Lookup Tables to Accelerate Color Transformations: https://developer.nvidia.com/gpugems/GPUGems2/gpugems2_chapter24.html
+- Wikimedia 6-bit RGB Cube that encouraged my application in Open Processing: https://commons.wikimedia.org/wiki/File:6-bit_RGB_Cube.gif 
+- Herman Tulleken's Gamasutra article regarding the effect of color usage in games: https://www.gamasutra.com/blogs/HermanTulleken/20150729/249761/Color_in_games_An_indepth_look_at_one_of_game_designs_most_useful_tools.php 
+- SuperCinema's analysis of movie's color palette (in portuguese):
+    - Mad Max Fury Road: https://www.youtube.com/watch?v=MDJ0xjwzC5M
+    - Birdman: https://www.youtube.com/watch?v=eNYzZ1hXDKo&t=494s
 
 
 
-
-https://www.openprocessing.org/sketch/744896 
-https://www.youtube.com/watch?v=MDJ0xjwzC5M
-https://www.youtube.com/watch?v=eNYzZ1hXDKo&t=494s
-https://commons.wikimedia.org/wiki/File:6-bit_RGB_Cube.gif 
-https://www.gamasutra.com/blogs/HermanTulleken/20150729/249761/Color_in_games_An_indepth_look_at_one_of_game_designs_most_useful_tools.php 
 
 
