@@ -63,6 +63,6 @@ The provided LUT should also not be too sparse, otherwise transformation artifac
 ### Godot Meetup São Paulo #6
 
 - Talk (in portuguese): https://youtu.be/_R1h4bkelic?t=3458
-- PDF (in portuguese): https://github.com/thiagoamendola/godot-color-lut-shader/blob/master/godot_meetup_presentation.pdf
+- PDF (in portuguese): https://github.com/thiagoamendola/godot-color-lut-shader/blob/master/godot_meetup_presentation_ptbr.pdf
 
 
