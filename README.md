@@ -1,10 +1,10 @@
 # Godot Color LUT Shader
 
-Color Grading with LUT shader for Godot 3.
+Real-Time Color Grading using LUT shader for Godot 3.
 
 ![](lut_title.png "LUT Title")
 
-This shader maps all rendered pixels and convert their colors according to a provided 3D lookup table (LUT) texture. It's a highly efficient color correction method for real-time applications in Godot.
+This shader remaps all rendered pixel colors into new ones according to a provided 3D lookup table (LUT) texture. It's a highly versatile and efficient color correction technique for real-time applications in Godot.
 
 ## Usage
 
