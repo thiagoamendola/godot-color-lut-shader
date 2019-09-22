@@ -60,7 +60,9 @@ The provided LUT should also not be too sparse, otherwise transformation artifac
     - Mad Max Fury Road: https://www.youtube.com/watch?v=MDJ0xjwzC5M
     - Birdman: https://www.youtube.com/watch?v=eNYzZ1hXDKo&t=494s
 
+### Godot Meetup São Paulo #6
 
-
+- Talk (in portuguese): https://youtu.be/_R1h4bkelic?t=3458
+- PDF (in portuguese): https://github.com/thiagoamendola/godot-color-lut-shader/blob/master/godot_meetup_presentation.pdf
 
 
