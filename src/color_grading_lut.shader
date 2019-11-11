@@ -26,6 +26,12 @@ vec3 get_interpolated_color(vec3 floorc, vec3 diff, float perc){
 }
 
 // Applies gamma correction to convert color from linear space to sRGB.
+vec3 convert_srgb_to_linear(vec3 srgb_color){
+	float gamma = 2.2;
+	return pow(srgb_color.rgb, vec3(gamma));//<--
+}
+
+// Applies gamma correction to convert color from linear space to sRGB.
 vec3 convert_linear_to_srgb(vec3 linear_color){
 	float gamma = 2.2;
 	return pow(linear_color.rgb, vec3(1.0/gamma));
@@ -34,12 +40,12 @@ vec3 convert_linear_to_srgb(vec3 linear_color){
 // Gets LUT mapped color using trilinear interpolation.
 vec4 get_lut_mapping_trilinear(vec4 old_color){
 	float lut_div = lut_size - 1.0;
-	// Get floor and ceil colors and diff from identity lut
+	// Get floor and ceil for srgb colors, convert to linear and diff between them
 	vec3 old_color_lut_base = lut_div * old_color.rgb;
 	vec3 old_color_floor_vec = floor(old_color_lut_base);
 	vec3 old_color_ceil_vec = ceil(old_color_lut_base);
-	vec3 old_color_diff = (old_color_floor_vec - old_color_ceil_vec)/lut_div;
-	vec3 old_color_percentages = get_interp_percent_color(old_color.rgb, old_color_floor_vec/lut_div, old_color_diff);
+	vec3 old_color_diff = convert_srgb_to_linear(old_color_floor_vec/lut_div) - convert_srgb_to_linear(old_color_ceil_vec/lut_div);
+	vec3 old_color_percentages = get_interp_percent_color(convert_srgb_to_linear(old_color.rgb), convert_srgb_to_linear(old_color_floor_vec/lut_div), old_color_diff);
 	// Get the surrounding 8 samples positions
 	vec3 lut_color_fff_vec = vec3(old_color_floor_vec.r, old_color_floor_vec.g, old_color_floor_vec.b);
 	vec3 lut_color_ffc_vec = vec3(old_color_floor_vec.r, old_color_floor_vec.g, old_color_ceil_vec.b);
@@ -58,14 +64,14 @@ vec4 get_lut_mapping_trilinear(vec4 old_color){
 	ivec2 lut_color_ccf_pos = ivec2(int(lut_size*lut_color_ccf_vec.b + lut_color_ccf_vec.r), int(lut_color_ccf_vec.g));
 	ivec2 lut_color_ccc_pos = ivec2(int(lut_size*lut_color_ccc_vec.b + lut_color_ccc_vec.r), int(lut_color_ccc_vec.g));
 	// Get gamma corrected color from LUT.
-	vec3 lut_color_fff = convert_linear_to_srgb(texelFetch(lut, lut_color_fff_pos, 0).rgb);
-	vec3 lut_color_ffc = convert_linear_to_srgb(texelFetch(lut, lut_color_ffc_pos, 0).rgb);
-	vec3 lut_color_fcf = convert_linear_to_srgb(texelFetch(lut, lut_color_fcf_pos, 0).rgb);
-	vec3 lut_color_fcc = convert_linear_to_srgb(texelFetch(lut, lut_color_fcc_pos, 0).rgb);
-	vec3 lut_color_cff = convert_linear_to_srgb(texelFetch(lut, lut_color_cff_pos, 0).rgb);
-	vec3 lut_color_cfc = convert_linear_to_srgb(texelFetch(lut, lut_color_cfc_pos, 0).rgb);
-	vec3 lut_color_ccf = convert_linear_to_srgb(texelFetch(lut, lut_color_ccf_pos, 0).rgb);
-	vec3 lut_color_ccc = convert_linear_to_srgb(texelFetch(lut, lut_color_ccc_pos, 0).rgb);
+	vec3 lut_color_fff = texelFetch(lut, lut_color_fff_pos, 0).rgb;
+	vec3 lut_color_ffc = texelFetch(lut, lut_color_ffc_pos, 0).rgb;
+	vec3 lut_color_fcf = texelFetch(lut, lut_color_fcf_pos, 0).rgb;
+	vec3 lut_color_fcc = texelFetch(lut, lut_color_fcc_pos, 0).rgb;
+	vec3 lut_color_cff = texelFetch(lut, lut_color_cff_pos, 0).rgb;
+	vec3 lut_color_cfc = texelFetch(lut, lut_color_cfc_pos, 0).rgb;
+	vec3 lut_color_ccf = texelFetch(lut, lut_color_ccf_pos, 0).rgb;
+	vec3 lut_color_ccc = texelFetch(lut, lut_color_ccc_pos, 0).rgb;
 	// Calculate first level interpolations.
 	vec3 lut_color_iff = get_interpolated_color(lut_color_fff, lut_color_fff - lut_color_cff , old_color_percentages.r);
 	vec3 lut_color_ifc = get_interpolated_color(lut_color_ffc, lut_color_ffc - lut_color_cfc, old_color_percentages.r);
@@ -77,7 +83,7 @@ vec4 get_lut_mapping_trilinear(vec4 old_color){
 	// Calculate third and final interpolation.
 	vec3 lut_color_iii = get_interpolated_color(lut_color_iif, lut_color_iif - lut_color_iic, old_color_percentages.b);
 	// Get final color with original alpha.
-	vec4 final_color = vec4(lut_color_iii, old_color.a);
+	vec4 final_color = vec4(convert_linear_to_srgb(lut_color_iii), old_color.a);
 	return final_color;
 }
 
