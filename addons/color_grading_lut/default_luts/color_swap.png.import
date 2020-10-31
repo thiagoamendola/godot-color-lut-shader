@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green_neon.png-d54729fc847f89f4c7aa26c6ed47ba8f.stex"
+path="res://.import/color_swap.png-15e002fb6e0d0edc6e18c9b4fcfc0b99.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luts/green_neon.png"
-dest_files=[ "res://.import/green_neon.png-d54729fc847f89f4c7aa26c6ed47ba8f.stex" ]
+source_file="res://addons/color_grading_lut/default_luts/color_swap.png"
+dest_files=[ "res://.import/color_swap.png-15e002fb6e0d0edc6e18c9b4fcfc0b99.stex" ]
 
 [params]
 

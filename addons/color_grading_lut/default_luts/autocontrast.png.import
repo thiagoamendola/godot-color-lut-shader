@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grayscale_no_sat.png-5dd39b2455918d0faaa1777ec99ebef8.stex"
+path="res://.import/autocontrast.png-efbb5cbc012757fe435d3659fd9c36a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luts/grayscale_no_sat.png"
-dest_files=[ "res://.import/grayscale_no_sat.png-5dd39b2455918d0faaa1777ec99ebef8.stex" ]
+source_file="res://addons/color_grading_lut/default_luts/autocontrast.png"
+dest_files=[ "res://.import/autocontrast.png-efbb5cbc012757fe435d3659fd9c36a3.stex" ]
 
 [params]
 

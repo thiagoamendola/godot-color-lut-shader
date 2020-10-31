@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/greeny.png-c3931603b3d4f780fc7d3a846c90222d.stex"
+path="res://.import/dark.png-ee32833de02d62374613bfabce4283f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luts/greeny.png"
-dest_files=[ "res://.import/greeny.png-c3931603b3d4f780fc7d3a846c90222d.stex" ]
+source_file="res://addons/color_grading_lut/default_luts/dark.png"
+dest_files=[ "res://.import/dark.png-ee32833de02d62374613bfabce4283f4.stex" ]
 
 [params]
 
