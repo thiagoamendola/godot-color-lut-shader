@@ -11,12 +11,12 @@ func _enter_tree():
 	pass
 
 func _exit_tree():
-    pass
+	pass
 
 func _unhandled_input(event):
-    if event is InputEventKey:
-        if event.pressed and event.scancode == KEY_F11:
-            generate_lut_screenshot()
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_F11:
+			generate_lut_screenshot()
 
 
 func generate_lut_screenshot():
@@ -49,6 +49,7 @@ func insert_image(target:Image, inserted:Image):
 	inserted.unlock()
 	target.unlock()
 	return target
+
 
 func generate_identity_lut(lut_size:int):
 	var image: Image = Image.new()
