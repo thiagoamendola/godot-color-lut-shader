@@ -8,6 +8,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/lut_size = 16.0
+shader_param/filter_alpha = 1.0
 shader_param/lut = ExtResource( 4 )
 
 [sub_resource type="GDScript" id=2]

@@ -3,8 +3,9 @@ shader_type canvas_item;
 uniform sampler2D lut;
 uniform float lut_size = 16.0;
 
+uniform float filter_alpha : hint_range(0, 1) = 1.0;
 
-// Gets interpolation percentage for color channel using floor and diff values.
+// Gets interpolation percentage for color  channel using floor and diff values.
 float get_interp_percent_channel(float channel_value, float floor_value, float diff_value){
 	// Workaround to avoid division by zero and return zero
 	float div_sign = abs(sign(diff_value));
@@ -83,7 +84,10 @@ vec4 get_lut_mapping_trilinear(vec4 old_color){
 
 
 void fragment(){
-	vec4 color = texture(SCREEN_TEXTURE,SCREEN_UV);
-	color = get_lut_mapping_trilinear(color);
-	COLOR = color;
+	vec4 original_color = texture(SCREEN_TEXTURE,SCREEN_UV);
+	vec4 filtered_color = get_lut_mapping_trilinear(original_color);
+	// Calculate filter alpha.
+	vec3 diff_color = filtered_color.rgb - original_color.rgb;
+	vec4 final_color = vec4(get_interpolated_color(original_color.rgb, diff_color, filter_alpha), filtered_color.a);
+	COLOR = final_color;
 }
