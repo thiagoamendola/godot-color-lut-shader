@@ -1,9 +1,11 @@
 tool
 extends ColorRect
 
+var shader_material
+
 func _enter_tree():
 	# Create Shader Material
-	var shader_material = ShaderMaterial.new()
+	shader_material = ShaderMaterial.new()
 	material = shader_material
 	# Assign Shader
 	shader_material.shader = load("res://addons/color_grading_lut/filter_node/color_grading_lut.shader")
@@ -17,3 +19,6 @@ func _enter_tree():
 
 func _exit_tree():
 	pass
+
+func _draw():
+	shader_material.set_shader_param("filter_alpha", color.a)
