@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-183cf2e93ebe2b357b9e1654f2cb69e4.stex"
+path="res://.import/tool_node_icon.png-7de9c741e5367f29986e9c2d3907ef16.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/color_grading_lut/screenshot_tool/icon.png"
-dest_files=[ "res://.import/icon.png-183cf2e93ebe2b357b9e1654f2cb69e4.stex" ]
+source_file="res://addons/color_grading_lut/screenshot_tool/tool_node_icon.png"
+dest_files=[ "res://.import/tool_node_icon.png-7de9c741e5367f29986e9c2d3907ef16.stex" ]
 
 [params]
 
