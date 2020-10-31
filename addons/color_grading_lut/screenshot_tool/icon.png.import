@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/color_swap_2.png-62174a12de5f8cf742fe2e367591138a.stex"
+path="res://.import/icon.png-183cf2e93ebe2b357b9e1654f2cb69e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luts/color_swap_2.png"
-dest_files=[ "res://.import/color_swap_2.png-62174a12de5f8cf742fe2e367591138a.stex" ]
+source_file="res://addons/color_grading_lut/screenshot_tool/icon.png"
+dest_files=[ "res://.import/icon.png-183cf2e93ebe2b357b9e1654f2cb69e4.stex" ]
 
 [params]
 

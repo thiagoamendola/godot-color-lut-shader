@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dark.png-5944248b99087dbae31a71d6dd96fdbf.stex"
+path="res://.import/doom_old.png-735d6d12b1c08ea5accf96249addc9b6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luts/dark.png"
-dest_files=[ "res://.import/dark.png-5944248b99087dbae31a71d6dd96fdbf.stex" ]
+source_file="res://addons/color_grading_lut/default_luts/doom_old.png"
+dest_files=[ "res://.import/doom_old.png-735d6d12b1c08ea5accf96249addc9b6.stex" ]
 
 [params]
 

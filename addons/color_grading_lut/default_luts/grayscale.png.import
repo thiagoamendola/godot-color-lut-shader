@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/inverted.png-23753398609bcd658544308721b633e3.stex"
+path="res://.import/grayscale.png-a4dc601952e5977dfd1dcaccfd5a8af0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luts/inverted.png"
-dest_files=[ "res://.import/inverted.png-23753398609bcd658544308721b633e3.stex" ]
+source_file="res://addons/color_grading_lut/default_luts/grayscale.png"
+dest_files=[ "res://.import/grayscale.png-a4dc601952e5977dfd1dcaccfd5a8af0.stex" ]
 
 [params]
 

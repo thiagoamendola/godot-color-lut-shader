@@ -6,14 +6,19 @@ Real-Time Color Grading using LUT shader for Godot 3.
 
 This shader remaps all rendered pixel colors into new ones according to a provided 3D lookup table (LUT) texture. It's a highly versatile and efficient color correction technique for real-time applications in Godot.
 
+## Installation
+
+- Copy the folder "color_grading_lut" from "addons" to your project's "addons" folder.
+
 ## Usage
 
 ### Shader
 
-1. Create an instance of "src/ColorGradingFilter.tscn" scene into your desired scene.
-2. In the Inspector, look for "_Material -> Material_", right click in "Shader Material" and click in "Make Unique"
-3. Now left click in the Shader Material, open the "_Shader Param_" tab and replace the *Lut* field for your desired LUT
-4. Resize the control to cover the whole screen
+1. Create an instance of "addons/color_grading_lut/filter_node/ColorGradingFilter.tscn" scene into your desired scene.
+2. In the Inspector, look for "_Material -> Material_", right click in "Shader Material" and click in "Make Unique".
+3. Now left click in the Shader Material, open the "_Shader Param_" tab and replace the *Lut* field for your desired LUT.
+    - There's a list of useful LUTS in "addons/color_grading_lut/default_luts".
+4. Resize the control to cover the whole screen.
 
 ### Screenshot Plugin
 
@@ -21,8 +26,7 @@ To assist in the creation of the LUTs, the **screenshot plugin** enables taking 
 
 #### How to install
 
-1. Copy the folder "color_grading_lut" from "addons" to your project's "addons" folder.
-2. Go to _Project Settings -> Plugins_ and change the status from "Color Grading LUT Assist Tool" to *Active*.
+1. Go to _Project Settings -> Plugins_ and change the status from "Color Grading LUT Assist Tool" to *Active*.
 
 #### How to use
 
