@@ -8,25 +8,24 @@ This shader remaps all rendered pixel colors into new ones according to a provid
 
 ## Installation
 
-- Copy the folder "color_grading_lut" from "addons" to your project's "addons" folder.
+1. Copy the folder "color_grading_lut" from "addons" to your project's "addons" folder.
+2. Go to _Project Settings -> Plugins_ and change the status from "Color Grading LUT Assist Tool" to *Active*.
 
 ## Usage
 
 ### Shader
 
-1. Create an instance of "addons/color_grading_lut/filter_node/ColorGradingFilter.tscn" scene into your desired scene.
-2. In the Inspector, look for "_Material -> Material_", right click in "Shader Material" and click in "Make Unique".
-3. Now left click in the Shader Material, open the "_Shader Param_" tab and replace the *Lut* field for your desired LUT.
+#### How to use
+
+1. Click in "Add Child Node" button in the Scene tab.
+2. Search for "ColorGradingFilter" and select it.
+3. Go to the Inspector tab, look for "Lut" and change to a different LUT.
     - There's a list of useful LUTS in "addons/color_grading_lut/default_luts".
-4. Resize the control to cover the whole screen.
+4. Resize the control to cover the whole screen or the desired area.
 
 ### Screenshot Plugin
 
 To assist in the creation of the LUTs, the **screenshot plugin** enables taking screenshots while playing the project and preparing it for color correction in an external image editor (such as [Krita](https://krita.org/en/)) by placing an identity LUT in the top left corner of the generated image.
-
-#### How to install
-
-1. Go to _Project Settings -> Plugins_ and change the status from "Color Grading LUT Assist Tool" to *Active*.
 
 #### How to use
 
